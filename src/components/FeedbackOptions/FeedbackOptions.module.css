@@ -1,0 +1,20 @@
+.options {
+  margin-bottom: 20px;
+}
+
+.options :not(:last-child) {
+  margin-right: 5px;
+}
+
+.btn {
+  border: solid 2px #000;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: teal;
+  color: #fff;
+  transition: 250ms;
+}

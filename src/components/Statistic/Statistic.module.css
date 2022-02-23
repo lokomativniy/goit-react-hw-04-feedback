@@ -1,0 +1,7 @@
+.stat {
+  text-decoration: none;
+  list-style: none;
+}
+.stat :not(:last-child) {
+  margin-bottom: 5px;
+}
