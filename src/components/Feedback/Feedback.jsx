@@ -13,13 +13,13 @@ export default function Feedback() {
   const handleChangeStats = event => {
     switch (event.target.name) {
       case 'good':
-        setGood(prevState => [event.target.name] + 1);
+        setGood(prevState => prevState + 1);
         break;
       case 'neutral':
-        setNeutral(prevState => [event.target.name] + 1);
+        setNeutral(prevState => prevState + 1);
         break;
       case 'bad':
-        setBad(prevState => [event.target.name] + 1);
+        setBad(prevState => prevState + 1);
         break;
       default:
         return;
@@ -33,24 +33,22 @@ export default function Feedback() {
       ? Math.round((good / countTotalFeedback()) * 100)
       : '0';
 
-  const render = () => {
-    return (
-      <Section title="Please leave feedback">
-        <FeedbackOptions onLeaveFeedback={handleChangeStats} />
-        <Section title="Statistics">
-          {countTotalFeedback() ? (
-            <Statistic
-              good={good}
-              neutral={neutral}
-              bad={bad}
-              total={countTotalFeedback()}
-              positivePercentage={countPositiveFeedbackPercentage()}
-            />
-          ) : (
-            <Notification message={'There is no feedback'} />
-          )}
-        </Section>
+  return (
+    <Section title="Please leave feedback">
+      <FeedbackOptions onLeaveFeedback={handleChangeStats} />
+      <Section title="Statistics">
+        {countTotalFeedback() ? (
+          <Statistic
+            good={good}
+            neutral={neutral}
+            bad={bad}
+            total={countTotalFeedback()}
+            positivePercentage={countPositiveFeedbackPercentage()}
+          />
+        ) : (
+          <Notification message={'There is no feedback'} />
+        )}
       </Section>
-    );
-  };
+    </Section>
+  );
 }
